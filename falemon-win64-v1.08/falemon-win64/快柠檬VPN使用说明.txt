@@ -1,0 +1,27 @@
+一、下载后如何使用?
+客户端为便携版，下载后解压在D盘根目录，进入目录双击Falemon.exe运行。
+
+二、解压后不能正常运行?
+1. Windows客户端目前仅支持Windows10以上、64位操作系统使用。
+2. 解压路径里不能包含中文、空格等特殊字符。
+3. 打开Falemon.exe时，尝试右键 - 使用管理员权限运行。
+
+三、显示 Fatal error: can t check configuration file bin\falemonhttp.conf : (error number 0)?
+同二，需要将快柠檬解压到C或D盘，不包含中文和空格的路径下。
+
+四、运行提示缺少vcruntime140.dll？
+需要下载微软VC运行库，复制下面的网址在浏览器打开下载: 
+https://flm11.com/p/downloads/windows-vc64
+
+五、运行后无法连接节点?
+1. 首次连接时，需要允许相应程序监听常用网络（如家庭/工作网络）。
+2. 打开Falemon.exe时，尝试右键 - 使用管理员权限运行。
+
+六、还有其他问题？
+1. 软件内问题反馈: 我的 - 问题反馈
+2. 邮箱联系: contact@falemon.com
+3. 电报群组: 
+    https://t.me/falemon_group
+4. 网址发布: 
+    https://github.com/Faalemon
+    https://twitter.com/Faalemon

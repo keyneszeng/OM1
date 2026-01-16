@@ -64,6 +64,9 @@ class SimulatorOrchestrator:
                 simulator.tick()
             except Exception as e:
                 logging.error(f"Error in simulator {simulator.name}: {e}")
+                if not self._stop_event.is_set():
+                    import time
+                    time.sleep(0.1)
 
     async def flush_promises(self) -> tuple[list[T.Any], list[asyncio.Task[T.Any]]]:
         """

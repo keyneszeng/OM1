@@ -67,7 +67,8 @@ class BackgroundOrchestrator:
                 background.run()
             except Exception as e:
                 logging.error(f"Error in background {background.name}: {e}")
-                time.sleep(0.1)
+                if not self._stop_event.is_set():
+                    time.sleep(0.1)
 
     def stop(self):
         """

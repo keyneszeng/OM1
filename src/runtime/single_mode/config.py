@@ -133,7 +133,10 @@ def load_config(
         else config_source_path
     )
 
-    with open(config_path, "r+") as f:
+    if not os.path.exists(config_path):
+        raise FileNotFoundError(f"Configuration file not found: {config_path}")
+
+    with open(config_path, "r") as f:
         raw_config = json5.load(f)
 
     config_version = raw_config.get("version")

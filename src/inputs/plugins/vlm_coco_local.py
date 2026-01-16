@@ -74,18 +74,23 @@ class VLM_COCO_Local(FuserInput[VLM_COCO_LocalConfig, Optional[np.ndarray]]):
         self.descriptor_for_LLM = "Object Detector"
 
         # Low resolution Faster R-CNN model with a MobileNetV3-Large backbone tuned for mobile use cases.
-        self.model = detection_model.fasterrcnn_mobilenet_v3_large_320_fpn(
-            weights="FasterRCNN_MobileNet_V3_Large_320_FPN_Weights.COCO_V1",
-            progress=True,
-            weights_backbone="MobileNet_V3_Large_Weights.IMAGENET1K_V1",
-        ).to(self.device)
-        self.class_labels = (
-            detection_model.FasterRCNN_MobileNet_V3_Large_320_FPN_Weights.DEFAULT.meta[
-                "categories"
-            ]
-        )
-        self.model.eval()
-        logging.info("COCO Object Detector Started")
+        try:
+            self.model = detection_model.fasterrcnn_mobilenet_v3_large_320_fpn(
+                weights="FasterRCNN_MobileNet_V3_Large_320_FPN_Weights.COCO_V1",
+                progress=True,
+                weights_backbone="MobileNet_V3_Large_Weights.IMAGENET1K_V1",
+            ).to(self.device)
+            self.class_labels = (
+                detection_model.FasterRCNN_MobileNet_V3_Large_320_FPN_Weights.DEFAULT.meta[
+                    "categories"
+                ]
+            )
+            self.model.eval()
+            logging.info("COCO Object Detector Started")
+        except Exception as e:
+            logging.error(f"Failed to load COCO model: {e}")
+            self.model = None
+            self.class_labels = []
 
         self.have_cam = check_webcam(self.camera_index)
 
