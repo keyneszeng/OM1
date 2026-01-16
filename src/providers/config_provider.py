@@ -106,7 +106,7 @@ class ConfigProvider:
 
             temp_path = self.config_path + ".tmp"
             with open(temp_path, "w") as f:
-                json.dump(new_config, f, indent=2)
+                json.dump(new_config, f, indent=2, default=str)
 
             os.rename(temp_path, self.config_path)
 

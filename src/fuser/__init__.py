@@ -70,6 +70,11 @@ class Fuser:
 
         inputs_fused = " ".join([s for s in input_strings if s is not None])
 
+        # If no inputs are available, skip processing
+        if not inputs_fused.strip():
+            logging.debug("No valid inputs to fuse")
+            return None
+
         # if we provide laws from blockchain, these override the locally stored rules
         # the rules are not provided in the system prompt, but as a separate INPUT,
         # since they are flowing from the outside world

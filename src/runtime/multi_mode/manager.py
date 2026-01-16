@@ -913,7 +913,7 @@ class ModeManager:
 
             temp_file = state_file + ".tmp"
             with open(temp_file, "w") as f:
-                json.dump(state_data, f, indent=2)
+                json.dump(state_data, f, indent=2, default=str)
 
             os.rename(temp_file, state_file)
             logging.debug(f"Mode state saved to {state_file}")
