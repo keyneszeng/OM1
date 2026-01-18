@@ -43,3 +43,12 @@ logs/
 # Mode system state files
 config/memory
 config/.runtime.json5
+
+# Security research files (not for public repo)
+config/hacker_poc.json5
+攻击*.py
+攻击*.md
+*攻击*.md
+*执行脚本.py
+*模拟报告.md
+*演示*.md
